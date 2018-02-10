@@ -76,6 +76,7 @@ function selectAllRows() {
     gridOptions.api.selectAll();
 }
 
+/*
 function onSelectionChanged() {
     var selectedRows = gridOptions.api.getSelectedRows();
     var selectedNodes = gridOptions.api.getSelectedNodes();
@@ -93,7 +94,7 @@ function onSelectionChanged() {
         }
         selectedRowsString += selectedRow.company;
     });
-}
+} */
 
 // wait for the document to be loaded, otherwise ag-Grid will not find the div in the document.
 document.addEventListener("DOMContentLoaded", function () {
