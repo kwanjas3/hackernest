@@ -2,21 +2,46 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 var fishFeedSchema = new Schema({
-
-
+    "productName": String,
+    "feedType": [{
+        "Friedmash": String,
+        "Starter": String,
+        "Grower": String,
+        "Finisher": String
+    }],
+    "shapeSize": [{
+        "Mash": String,
+        "Crumble": String,
+        "Pellet": String,
+        "PelletSize": String
+    }
+    ],
+    "fishWeight": String,
+    "composition": [
+        {
+            "drymatmin": String,
+            "proteinmin": String,
+            "fatmin": String,
+            "fibermax": String,
+            "ashmax": String
+        }
+    ],
+    "ingredient": String,
+    "packagingKg": String,
+    "priceKgUSD": String
 });
 
 
 let FishFeed;
 
 module.exports.initialize = () => {
-    return new Promise ((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
         let db = mongoose.createConnection("mongodb://jason:jason@ds117605.mlab.com:17605/fishhack");
-        db.on('error', (err)=>{
+        db.on('error', (err) => {
             reject(err);
         });
 
-        db.once('open', ()=>{
+        db.once('open', () => {
             FishFeed = db.model("fishfeed", fishFeedSchema);
             resolve();
         });
