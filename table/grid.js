@@ -61,18 +61,15 @@ var gridOptions = {
     enableColResize: true,
     rowSelection: 'multiple',
     onSelectionChanged: onSelectionChanged,
+    suppressRowClickSelection: true,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
     },
-    rowSelection: 'multiple',
-    onSelectionChanged: onSelectionChanged,
-
 };
 
 function onSelectionChanged() {
-    var selectedRows = gridOptions.api.getSelectedRows();
-    
-    return (selectedRows)
+    selectedRows = gridOptions.api.getSelectedRows();
+    return selectedRows;    
 }
 // used in our jasmine test
 function selectAllRows() {
