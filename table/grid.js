@@ -50,6 +50,7 @@ var gridOptions = {
     enableSorting: true,
     enableFilter: true,
     enableColResize: true,
+    suppressRowClickSelection: true,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
     },
@@ -59,9 +60,8 @@ var gridOptions = {
 };
 
 function onSelectionChanged() {
-    var selectedRows = gridOptions.api.getSelectedRows();
-    
-    return (selectedRows)
+    selectedRows = gridOptions.api.getSelectedRows();
+    return selectedRows;    
 }
 // used in our jasmine test
 function selectAllRows() {
