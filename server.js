@@ -8,6 +8,10 @@ const ds = require('./data-service.js');
 
 app.use(express.static("public"));
 
+
+
+app.use(express.static("table"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.engine(".hbs", exphbs({

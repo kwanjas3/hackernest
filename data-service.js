@@ -1,3 +1,4 @@
+
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
@@ -16,6 +17,7 @@ var feedSchema = new Schema({
   "packagingKg": String,
   "priceKg": String,
   "feedSpecies": String
+
 });
 
 
