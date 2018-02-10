@@ -15,7 +15,7 @@ var columnDefs = [
     ]},
     {headerName: "Ingredient", field: "ingredient"},
     {headerName: "Packaging kg", field: "packagingKg"},
-    {headerName: "priceKgUSD", field: "priceKgUSD"}
+    {headerName: "Price / kg (USD)", field: "priceKgUSD"}
 ];
 
 
