@@ -4,8 +4,8 @@ const HTTP_PORT = process.env.PORT || 8080;
 const path = require('path')
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const data_service = require('./data-service.js');
-
+// const ds = require('./data-service.js');
+const dsGet = require('./data-service-fetch.js');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,12 +26,14 @@ app.engine(".hbs", exphbs({
 }));
 app.set("view engine", ".hbs");
 
-
-app.listen(HTTP_PORT, ()=>{
-    console.log("Listening on " + HTTP_PORT);
-})
-
 app.get("/", (req, res)=>{
     res.render('home', {data: {}});
-    data_service.initialize();
 });
+
+ds.initialize().then(()=>{
+    app.listen(HTTP_PORT, ()=>{
+        console.log("Listening on " + HTTP_PORT);
+    });
+});
+
+
