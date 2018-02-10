@@ -31,7 +31,7 @@ function compareRows(data) {
     let displayTemplate = _.template(
         '<div class="col-md-12">' +
         '<div class ="row">' +
-        '<div class="col-md-2 content ">' +
+        '<div class="col-md-2 content" align="center">' +
         '<Strong>Name: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content " align="center">' +
@@ -43,7 +43,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content ">' +
+        '<div class="col-md-2 content " align="center">' +
         '<Strong>Feed Type: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content" align="center">' +
@@ -55,7 +55,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content ">' +
+        '<div class="col-md-2 content " align="center">' +
         '<Strong>Price ($USD / kg): </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content priceCell1" align="center">' +
@@ -67,7 +67,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content">' +
+        '<div class="col-md-2 content" align="center">' +
         '<Strong>Packaging (kg): </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content packagingKgCell1" align="center">' +
@@ -75,6 +75,19 @@ function compareRows(data) {
         '</div>' +
         '<div class="col-md-5 content packagingKgCell2" align="center">' +
         '<%- data[1].packagingKg %> <br>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class ="row" >' +
+        '<div class="col-md-2 content" align="center">' +
+        '<Strong>Ingredients: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content ingredientCell1" align="center">' +
+        '<%- data[0].ingredient %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content ingredientCell2" align="center">' +
+        '<%- data[1].ingredient %> <br>' +
         '</div>' +
         '</div>' +
         '</div>'
@@ -131,5 +144,4 @@ function highlightBenefits(data) {
         $(".packagingKgCell1").css("background-color", "red");
         $(".packagingKgCell1").css("color", "yellow");
     }
-
 }

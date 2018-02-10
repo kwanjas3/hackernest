@@ -7,10 +7,7 @@ const bodyParser = require('body-parser');
 const ds = require('./data-service.js');
 var _ = require('lodash');
 
-
 app.use(express.static("public"));
-
-
 
 app.use(express.static("table"));
 
