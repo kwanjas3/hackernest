@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const ds = require('./data-service.js');
 
 app.use(express.static("public"));
+app.use(express.static("table"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine(".hbs", exphbs({
     extname: ".hbs",
@@ -23,6 +24,7 @@ app.engine(".hbs", exphbs({
         }
     }
 }));
+
 app.set("view engine", ".hbs");
 
 app.get("/", (req, res)=>{
