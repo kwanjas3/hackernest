@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 var fishFeedSchema = new Schema({
-    "company": String,
+    "companyName": String,
     "fishSpecies": String,
     "productName": String,
     "feedType": String, 
@@ -18,19 +18,61 @@ var fishFeedSchema = new Schema({
     "priceKgUSD": String
 });
 
+/*
+//Defined in initialize;
+// let Feed;
+let Feed;
+let Payload;
+// let allFeeds = [];
+let db;
 
-let FishFeed;
+module.exports.initialize = function() {
+  return new Promise((resolve, reject) => {
 
-module.exports.initialize = () => {
-    return new Promise((resolve, reject) => {
-        let db = mongoose.createConnection("mongodb://jason:jason@ds117605.mlab.com:17605/fishhack");
-        db.on('error', (err) => {
-            reject(err);
-        });
+    db = mongoose.createConnection(
+      "mongodb://jason:jason@ds117605.mlab.com:17605/fishhack"
+    );
 
-        db.once('open', () => {
-            FishFeed = db.model("fishfeed", fishFeedSchema);
-            resolve();
-        });
+    db.on('error', ()=>{
+        console.log("connection error");
+        reject();
+    });
+
+    db.once('open', ()=>{
+        Feed = db.model("fishfeed", feedSchema);
+        resolve();
+    });      
     });
 };
+
+// get all the data from the database
+module.exports.findAll = function() {
+    return new Promise((resolve, reject)=>{
+        Feed.find()
+        .exec()
+        .then(result => {
+          Payload = JSON.stringify(result);
+          resolve(Payload);
+        })
+        .catch(err => {
+          reject("error finding data");
+        });
+    });
+}
+
+// get data for specified company by company name
+module.exports.getCompany = (comp)=>{
+    return new Promise ((resolve, reject)=>{
+        Feed.find({companyName: comp})
+        .exec()
+        .then((data)=>{
+            console.log(data);
+            resolve(data);
+        })
+        .catch((err)=>{
+            console.log(err);
+            reject();
+        });
+    });
+}
+*/

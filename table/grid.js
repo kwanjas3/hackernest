@@ -18,6 +18,8 @@ var columnDefs = [
     {headerName: "priceKgUSD", field: "priceKgUSD"}
 ];
 
+
+
 // specify the data
 var rowData = [
     { fishSpecies: "S1", productName: "Specialty Fish Feeds (ESQ)", 
@@ -61,9 +63,17 @@ var gridOptions = {
     onSelectionChanged: onSelectionChanged,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
-    }
+    },
+    rowSelection: 'multiple',
+    onSelectionChanged: onSelectionChanged,
+
 };
 
+function onSelectionChanged() {
+    var selectedRows = gridOptions.api.getSelectedRows();
+    
+    return (selectedRows)
+}
 // used in our jasmine test
 function selectAllRows() {
     gridOptions.api.selectAll();
@@ -96,3 +106,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // create the grid passing in the div to use together with the columns & data we want to use
     new agGrid.Grid(eGridDiv, gridOptions);
 });
+
