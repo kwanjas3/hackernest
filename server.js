@@ -26,6 +26,7 @@ app.engine(".hbs", exphbs({
 }));
 app.set("view engine", ".hbs");
 
+data_service.initialize();
 
 app.listen(HTTP_PORT, ()=>{
     console.log("Listening on " + HTTP_PORT);
@@ -33,5 +34,4 @@ app.listen(HTTP_PORT, ()=>{
 
 app.get("/", (req, res)=>{
     res.render('home', {data: {}});
-    data_service.initialize();
 });

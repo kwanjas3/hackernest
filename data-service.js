@@ -1,15 +1,13 @@
-const mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-mongoose.createConnection("mongodb://hojung:hojung@ds117605.mlab.com:17605/fishhack");
-
 var feedSchema = new Schema({
-    "productName": String,
-    "feedType": [{
-        "friedMash": String,
+    "productName":  String,
+    "feedType":[{
+        "friedmash": String,
         "starter": String,
         "grower": String,
-        "Finisher": String
+        "finisher": String
     }],
     "shapeSize": [{
         "mash": String,
@@ -17,50 +15,34 @@ var feedSchema = new Schema({
         "pellet": String,
         "pelletSize": String
     }],
-    "fishWeight": [String],
-    "composition": {
-        "vitamin": [String],
-        "protein": [String],
-        "fat": [String],
-        "fiber": [String],
-        "mineral":[String]
-    },
-    "ingredient":[String],
-    "packaging": [String],
-    "price": Number
+    "fishWeight": String,
+    "composition": [{
+        "dryMatmin": String,
+        "proteinMin": String,
+        "fatMin": String,
+        "fiberMax": String,
+        "ashMax": String
+    }],
+    "ingredient": String,
+    "packagingKg":String,
+    "price": String
+    
 });
 
-var Feed = mongoose.model("Feed", feedSchema);
-
-var abcFeed = new Feed({
-    "productName": "ABC Feed",
-    "feedType": ["Mash", "Pallete"],
-    "shapeSize": ["0.1", "1"],
-    "fishWeight": ["100", "110"],
-    "composition":{
-        "vitamin": ["D", "A", "C"],
-        "protein": ["whey"],
-        "fat": ["trans"],
-        "fiber": ["fiber1", "fiber2"],
-        "mineral": ["iron", "zinc"]
-    },
-    "ingredient": ["fish", "food", "something"],
-    "packaging": ["50", "100", "150"],
-    "price": 100
-});
-
-
+//Defined in initialize;
+let Feed;
 
 module.exports.initialize = function() {
+    console.log("Initializing...");
     return new Promise((resolve, reject)=>{
-        abcFeed.save((err)=>{
-            if(err){
-                console.log(err);
-            } else {
-                console.log("abcFeed Saved");
-            }
-            process.exit();
+        let db = mongoose.createConnection("mongodb://jason:jason@ds117605.mlab.com:17605/fishhack");
+        db.on('error', (err) => {
+            reject(err);
         });
-        resolve();
+
+        db.once('open', () => {
+            Feed = db.model("fishfeed", feedSchema);
+            resolve();
+        });
     });
 }
