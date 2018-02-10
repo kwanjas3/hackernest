@@ -1,0 +1,17 @@
+{
+  "name": "fishhack",
+  "version": "1.0.0",
+  "description": "Fish Hackathon 2018",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FishnChips",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.0.4"
+  }
+}
