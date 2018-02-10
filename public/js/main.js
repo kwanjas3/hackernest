@@ -18,8 +18,6 @@ $(function () {
 
 }) //jQuery rdy
 
-
-
 function showModal(title, message) {
     $('.modal-title').empty();
     $('.modal-body').empty();
@@ -33,53 +31,50 @@ function compareRows(data) {
     let displayTemplate = _.template(
         '<div class="col-md-12">' +
         '<div class ="row">' +
-        '<div class="col-md-2">' +
+        '<div class="col-md-2 content ">' +
         '<Strong>Name: </Strong><br>' +
         '</div>' +
-        '<div class="col-md-5" align="center" style="padding-right:20px; border-right: 1px solid #ccc;>' +
+        '<div class="col-md-5 content " align="center">' +
         '<%- data[0].productName %> <br>' +
         '</div>' +
-        '<div class="col-md-5" align="center">' +
+        '<div class="col-md-5 content " align="center">' +
         '<%- data[1].productName %> <br>' +
         '</div>' +
         '</div>' +
 
-        '<br><br>' +
         '<div class ="row">' +
-        '<div class="col-md-2">' +
+        '<div class="col-md-2 content ">' +
         '<Strong>Feed Type: </Strong><br>' +
         '</div>' +
-        '<div class="col-md-5" align="center">' +
+        '<div class="col-md-5 content" align="center">' +
         '<%- data[0].feedType %> <br>' +
         '</div>' +
-        '<div class="col-md-5" align="center">' +
+        '<div class="col-md-5 content " align="center">' +
         '<%- data[1].feedType %> <br>' +
         '</div>' +
         '</div>' +
 
-        '<br><br>' +
         '<div class ="row">' +
-        '<div class="col-md-2">' +
-        '<Strong>Price / kg: </Strong><br>' +
+        '<div class="col-md-2 content ">' +
+        '<Strong>Price ($USD / kg): </Strong><br>' +
         '</div>' +
-        '<div class="col-md-5 priceCell1" align="center">' +
+        '<div class="col-md-5 content priceCell1" align="center">' +
         '$<%- data[0].priceKgUSD %> <br>' +
         '</div>' +
-        '<div class="col-md-5 priceCell2" align="center">' +
+        '<div class="col-md-5 content priceCell2" align="center">' +
         '$<%- data[1].priceKgUSD %> <br>' +
         '</div>' +
         '</div>' +
 
-        '<br><br>' +
         '<div class ="row">' +
-        '<div class="col-md-2">' +
-        '<Strong>Packaging Kg: </Strong><br>' +
+        '<div class="col-md-2 content">' +
+        '<Strong>Packaging (kg): </Strong><br>' +
         '</div>' +
-        '<div class="col-md-5 packagingKgCell1" align="center">' +
-        '$<%- data[0].packagingKg %> <br>' +
+        '<div class="col-md-5 content packagingKgCell1" align="center">' +
+        '<%- data[0].packagingKg %> <br>' +
         '</div>' +
-        '<div class="col-md-5 packagingKgCell2" align="center">' +
-        '$<%- data[1].packagingKg %> <br>' +
+        '<div class="col-md-5 content packagingKgCell2" align="center">' +
+        '<%- data[1].packagingKg %> <br>' +
         '</div>' +
         '</div>' +
         '</div>'
