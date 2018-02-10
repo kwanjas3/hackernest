@@ -6,15 +6,11 @@ var fishFeedSchema = new Schema({
     "feedType": String, 
     "shapeSize": String,
     "fishWeight": String,
-    "composition": [
-        {
-            "drymatmin": String,
-            "proteinmin": String,
-            "fatmin": String,
-            "fibermax": String,
-            "ashmax": String
-        }
-    ],
+    "drymatmin": String,
+    "proteinmin": String,
+    "fatmin": String,
+    "fibermax": String,
+    "ashmax": String,
     "ingredient": String,
     "packagingKg": String,
     "priceKgUSD": String

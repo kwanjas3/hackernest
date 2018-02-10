@@ -5,22 +5,39 @@ var columnDefs = [
     {headerName: "Shape and Size", field: "shapeSize"},
     {headerName: "Fish Weight", field: "fishWeight"},
     {headerName: "Compostion", children: [
-        {headerName: "Drymat Min", valueGetter: "data.composition.drymatmin" },
-        {headerName: "Protein Min", valueGetter: "data.composition.proteinmin"},
-        {headerName: "Fat Min", valueGetter: "data.composition.fatmin"},
-        {headerName: "Fiber Max", valueGetter: "data.composition.fibermax"},
-        {headerName: "Ash Max", valueGetter: "data.composition.ashmax"}
+        {headerName: "Drymat Min", field: "drymatmin" },
+        {headerName: "Protein Min", field: "proteinmin"},
+        {headerName: "Fat Min", field: "fatmin"},
+        {headerName: "Fiber Max", field: "fibermax"},
+        {headerName: "Ash Max", field: "ashmax"}
     ]},
-    {headerName: "Ingredient", field: "ingrredient"},
+    {headerName: "Ingredient", field: "ingredient"},
     {headerName: "Packaging kg", field: "packagingKg"},
     {headerName: "priceKgUSD", field: "priceKgUSD"}
 ];
 
 // specify the data
 var rowData = [
-    {make: "Toyota", model: "Celica", price: 35000},
-    {make: "Ford", model: "Mondeo", price: 32000},
-    {make: "Porsche", model: "Boxter", price: 72000}
+    {productName: "Specialty Fish Feeds (ESQ)", feedType: "Fry mash",
+        shapeSize: "Mash", fishWeight: "0.1 - 2",
+        drymatmin: "87", proteinmin: "30", fatmin: "5", fibermax: "8", ashmax: "",
+        ingredient: "soya bean meal, wheat flour, fish oil",
+        packagingKg: "20", priceKgUSD: "0.53"},
+    {productName: "Specialty Fish Feeds (ESQ)", feedType: "Starter",
+        shapeSize: "Crumble", fishWeight: "2 - 20",
+        drymatmin: "87", proteinmin: "29", fatmin: "5", fibermax: "8", ashmax: "",
+        ingredient: "soya bean meal, wheat flour, fish oil",
+        packagingKg: "20", priceKgUSD: "0.52"},
+    {productName: "Specialty Fish Feeds (ESQ)", feedType: "Starter",
+        shapeSize: "Pellet", fishWeight: "2 - 40",
+        drymatmin: "87", proteinmin: "29", fatmin: "5", fibermax: "8", ashmax: "",
+        ingredient: "soya bean meal, wheat flour, fish oil",
+        packagingKg: "20", priceKgUSD: "0.51"},
+    {productName: "Specialty Fish Feeds (ESQ)", feedType: "Starter",
+        shapeSize: "Pellet", fishWeight: "40 - 100",
+        drymatmin: "87", proteinmin: "27", fatmin: "5", fibermax: "8", ashmax: "",
+        ingredient: "soya bean meal, wheat flour, fish oil",
+        packagingKg: "30", priceKgUSD: "0.47"},
 ];
 
 // let the grid know which columns and what data to use
