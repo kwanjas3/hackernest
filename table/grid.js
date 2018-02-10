@@ -1,6 +1,6 @@
 // specify the columns
 var columnDefs = [
-    {headerName: "Manufactuere", field: "company", checkBoxSelection: true},
+    {headerName: "Manufactuere", field: "company", checkboxSelection: true, width: 800},
     {headerName: "Fish Species", field: "fishSpecies"},
     {headerName: "Product Name", field: "productName"},
     {headerName: "Feed Type", field: "feedType"},
@@ -72,6 +72,7 @@ function selectAllRows() {
 function onSelectionChanged() {
     var selectedRows = gridOptions.api.getSelectedRows();
     console.log(selectedRows);
+    console.log(selectedRows.length);
     var selectedRowsString = '';
     selectedRows.forEach( function(selectedRow, index) {
         if (index!==0) {
@@ -79,7 +80,6 @@ function onSelectionChanged() {
         }
         selectedRowsString += selectedRow.company;
     });
-    document.querySelector('#selectedRows').innerHTML = selectedRowsString;
 }
 
 /*
