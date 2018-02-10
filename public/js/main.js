@@ -82,8 +82,6 @@ function compareRows(data) {
         '$<%- data[1].packagingKg %> <br>' +
         '</div>' +
         '</div>' +
-
-
         '</div>'
     )
 
