@@ -4,6 +4,8 @@ const HTTP_PORT = process.env.PORT || 8080;
 const path = require('path')
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const data_service = require('./data-service.js');
+
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
