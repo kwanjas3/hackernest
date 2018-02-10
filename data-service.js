@@ -1,26 +1,36 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-let connectDB = mongoose.createConnection("mongodb://hojung:hojung@ds117605.mlab.com:17605/fishhack");
+mongoose.createConnection("mongodb://hojung:hojung@ds117605.mlab.com:17605/fishhack");
 
 var feedSchema = new Schema({
     "productName": String,
-    "feedType": [],
-    "shapeSize": [],
-    "fishWeight": [],
+    "feedType": [{
+        "friedMash": String,
+        "starter": String,
+        "grower": String,
+        "Finisher": String
+    }],
+    "shapeSize": [{
+        "mash": String,
+        "crumble": String,
+        "pellet": String,
+        "pelletSize": String
+    }],
+    "fishWeight": [String],
     "composition": {
-        "vitamin": [],
-        "protein": [],
-        "fat": [],
-        "fiber": [],
-        "mineral":[]
+        "vitamin": [String],
+        "protein": [String],
+        "fat": [String],
+        "fiber": [String],
+        "mineral":[String]
     },
-    "ingredient":[],
-    "packaging": [],
+    "ingredient":[String],
+    "packaging": [String],
     "price": Number
 });
 
-var Feed = mongoose.model("fishfeed", feedSchema);
+var Feed = mongoose.model("Feed", feedSchema);
 
 var abcFeed = new Feed({
     "productName": "ABC Feed",
@@ -39,11 +49,18 @@ var abcFeed = new Feed({
     "price": 100
 });
 
-abcFeed.save((err)=>{
-    if(err){
-        console.log(err);
-    } else {
-        console.log("abcFeed Saved");
-    }
-    process.exit();
-});
+
+
+module.exports.initialize = function() {
+    return new Promise((resolve, reject)=>{
+        abcFeed.save((err)=>{
+            if(err){
+                console.log(err);
+            } else {
+                console.log("abcFeed Saved");
+            }
+            process.exit();
+        });
+        resolve();
+    });
+}

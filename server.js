@@ -33,4 +33,5 @@ app.listen(HTTP_PORT, ()=>{
 
 app.get("/", (req, res)=>{
     res.render('home', {data: {}});
-})
+    data_service.initialize();
+});
