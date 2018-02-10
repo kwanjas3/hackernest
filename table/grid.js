@@ -13,7 +13,7 @@ var columnDefs = [
     ]},
     {headerName: "Ingredient", field: "ingredient"},
     {headerName: "Packaging kg", field: "packagingKg"},
-    {headerName: "priceKgUSD", field: "priceKgUSD"}
+    {headerName: "priceKgUSD", field: "priceKgUSD"},
     {headerName: "Manufactuere", field: "company"}
 ];
 
@@ -47,6 +47,7 @@ var gridOptions = {
     rowData: rowData,
     enableSorting: true,
     enableFilter: true,
+    enableColResize: true,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
     }
