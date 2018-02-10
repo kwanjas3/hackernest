@@ -71,8 +71,14 @@ function selectAllRows() {
 
 function onSelectionChanged() {
     var selectedRows = gridOptions.api.getSelectedRows();
-    console.log(selectedRows);
-    console.log(selectedRows.length);
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    if (selectedRows.length > 2) {
+        $('#exampleModal').modal('show');
+        for (let i = 2; i < selectedNodes.length; i ++) {
+            selectedNodes[i].setSelected(false);
+        }
+    }
+
     var selectedRowsString = '';
     selectedRows.forEach( function(selectedRow, index) {
         if (index!==0) {
@@ -81,35 +87,6 @@ function onSelectionChanged() {
         selectedRowsString += selectedRow.company;
     });
 }
-
-/*
-function showGenericModal(title, message) {
-    console.log("Showing: " + title);
-    $('.modal-title').empty();
-    $('.modal-body').empty();
-    $('.modal-title').html(title);
-    $('.modal-body').html(message);
-    $('#genericModal').modal();
-}
-
-function refreshRows(rowData) {
-    console.log("refreshing employee rows...")
-    $("#myGrid").empty();
-
-    var employeeTemplate = _.template(
-        '<% _.forEach(employees, function(employee) { %>' +
-        '<div class="row body-row" data-id="<%- employee._id %>">' +
-        '<div class="col-xs-4 body-column">' + '<%- employee.FirstName %>' + '</div>' +
-        '<div class="col-xs-4 body-column"><%- employee.LastName %></div>' +
-        '<div class="col-xs-4 body-column"><%- employee.Position.PositionName %></div>' +
-        '</div>' +
-        '<% }); %>'
-    );
-    let employeeRow = employeeTemplate({ employees });
-    $("#employees-table").append(employeeRow);
-
-} // refreshEmployeesRow()
-*/
 
 // wait for the document to be loaded, otherwise ag-Grid will not find the div in the document.
 document.addEventListener("DOMContentLoaded", function () {
