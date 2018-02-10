@@ -14,6 +14,7 @@ var columnDefs = [
     {headerName: "Ingredient", field: "ingredient"},
     {headerName: "Packaging kg", field: "packagingKg"},
     {headerName: "priceKgUSD", field: "priceKgUSD"}
+    {headerName: "Manufactuere", field: "company"}
 ];
 
 // specify the data
@@ -22,22 +23,22 @@ var rowData = [
         shapeSize: "Mash", fishWeight: "0.1 - 2",
         drymatmin: "87", proteinmin: "30", fatmin: "5", fibermax: "8", ashmax: "",
         ingredient: "soya bean meal, wheat flour, fish oil",
-        packagingKg: "20", priceKgUSD: "0.53"},
+        packagingKg: "20", priceKgUSD: "0.53", company: "Aquaprime (Aquaprime Philippines International, Inc.)"},
     {productName: "Specialty Fish Feeds (ESQ)", feedType: "Starter",
         shapeSize: "Crumble", fishWeight: "2 - 20",
         drymatmin: "87", proteinmin: "29", fatmin: "5", fibermax: "8", ashmax: "",
         ingredient: "soya bean meal, wheat flour, fish oil",
-        packagingKg: "20", priceKgUSD: "0.52"},
+        packagingKg: "20", priceKgUSD: "0.52", company: "Aquaprime (Aquaprime Philippines International, Inc.)"},
     {productName: "Specialty Fish Feeds (ESQ)", feedType: "Starter",
         shapeSize: "Pellet", fishWeight: "2 - 40",
         drymatmin: "87", proteinmin: "29", fatmin: "5", fibermax: "8", ashmax: "",
         ingredient: "soya bean meal, wheat flour, fish oil",
-        packagingKg: "20", priceKgUSD: "0.51"},
+        packagingKg: "20", priceKgUSD: "0.51", company: "Aquaprime (Aquaprime Philippines International, Inc.)"},
     {productName: "Specialty Fish Feeds (ESQ)", feedType: "Starter",
         shapeSize: "Pellet", fishWeight: "40 - 100",
         drymatmin: "87", proteinmin: "27", fatmin: "5", fibermax: "8", ashmax: "",
         ingredient: "soya bean meal, wheat flour, fish oil",
-        packagingKg: "30", priceKgUSD: "0.47"},
+        packagingKg: "30", priceKgUSD: "0.47", company: "Aquaprime (Aquaprime Philippines International, Inc.)"},
 ];
 
 // let the grid know which columns and what data to use

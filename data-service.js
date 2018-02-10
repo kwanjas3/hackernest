@@ -13,7 +13,8 @@ var fishFeedSchema = new Schema({
     "ashmax": String,
     "ingredient": String,
     "packagingKg": String,
-    "priceKgUSD": String
+    "priceKgUSD": String,
+    "company": String
 });
 
 
