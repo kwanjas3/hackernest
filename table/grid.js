@@ -1,6 +1,6 @@
 // specify the columns
 var columnDefs = [
-    {headerName: "Product Name", field: "productName"},
+    {headerName: "Product Name", field: "productName", checkboxSelection: true},
     {headerName: "Feed Type", field: "feedType"},
     {headerName: "Shape and Size", field: "shapeSize"},
     {headerName: "Fish Weight", field: "fishWeight"},
@@ -16,6 +16,8 @@ var columnDefs = [
     {headerName: "priceKgUSD", field: "priceKgUSD"},
     {headerName: "Manufactuere", field: "company"}
 ];
+
+
 
 // specify the data
 var rowData = [
@@ -50,9 +52,17 @@ var gridOptions = {
     enableColResize: true,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
-    }
+    },
+    rowSelection: 'multiple',
+    onSelectionChanged: onSelectionChanged,
+
 };
 
+function onSelectionChanged() {
+    var selectedRows = gridOptions.api.getSelectedRows();
+    
+    return (selectedRows)
+}
 // used in our jasmine test
 function selectAllRows() {
     gridOptions.api.selectAll();
@@ -66,3 +76,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // create the grid passing in the div to use together with the columns & data we want to use
     new agGrid.Grid(eGridDiv, gridOptions);
 });
+
