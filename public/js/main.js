@@ -1,6 +1,17 @@
 let selectRows;
-
 $(function () {
+    $.ajax({
+        url: "https://api.mlab.com/api/1/databases/fishhack/collections/fishfeeds?apiKey=aTV755BUwb3h04SezC5ds5X3hbHpHZ4f",
+        type: "GET",
+        contentType: "application/json"
+    })
+    .done((data)=>{
+        rowData = data;
+    })
+    .fail((err)=>{
+        console.log(typeof(err));
+    });
+    
     $("#compareBtn").on('click', function () {
         $(".potentialAlert").empty();
         selectRows = onSelectionChanged();
@@ -12,11 +23,6 @@ $(function () {
         else {
             $(".potentialAlert").html("<div class='alert alert-danger'><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
         }
-    })
-
-    $("#payload-search").keyup(function(){
-        getFilteredPayload($("#payload-search").val());
-
     })
 
 }) //jQuery rdy
@@ -192,21 +198,18 @@ function highlightBenefits(data) {
     console.log(parseFloat(data[0].proteinSources));
 }
 
-function getFilteredPayload(filterString) {
-    let regxString = new RegExp(filterString, 'i');
-    let filteredPayload = _.filter(rowData, function(row){
-        if (row.productName.match(regxString) || row.feedType.match(regxString) || row.shapeSize.match(regxString) || 
-            row.fishWeight.match(regxString) || row.drymatmin.match(regxString) || row.proteinmin.match(regxString) ||
-            row.fatmin.match(regxString) || row.fibermax.match(regxString) || row.ashmax.match(regxString) || row.ingredient.match(regxString) ||
-            row.packagingKg.match(regxString) || row.priceKgUSD.match(regxString) || row.company.match(regxString) ||
-            row.proteinSources.match(regxString)) {
-                return row;
-            }
-    })
+// function getFilteredPayload(filterString) {
+//     let regxString = new RegExp(filterString, 'i');
+//     let filteredPayload = _.filter(rowData, function(row){
+//         if (row.productName.match(regxString) || row.feedType.match(regxString) || row.shapeSize.match(regxString) || 
+//             row.fishWeight.match(regxString) || row.drymatmin.match(regxString) || row.proteinmin.match(regxString) ||
+//             row.fatmin.match(regxString) || row.fibermax.match(regxString) || row.ashmax.match(regxString) || row.ingredient.match(regxString) ||
+//             row.packagingKg.match(regxString) || row.priceKgUSD.match(regxString) || row.company.match(regxString) ||
+//             row.proteinSources.match(regxString)) {
+//                 return row;
+//             }
+//     })
 
-    if (filterString == "")
-    refreshEmployeeRows(rowsData);
-    else
-    refreshEmployeeRows(filteredPayload);
+//     console.log(filteredPayload);
 
-}
+// }
