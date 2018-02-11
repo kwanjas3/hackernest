@@ -17,9 +17,9 @@ In addition, you will need to install the following dependencies:
 * [Express.js](https://expressjs.com/)
 * [Handlebars.js](http://handlebarsjs.com/)
 * [Body-parser](https://www.npmjs.com/package/body-parser)
-* [ag-grid-enterprise]
-* [lodash]
-* [mongoose]
+* [ag-grid-enterprise] npm install --save ag-grid-enterprise
+* [lodash](https://lodash.com/)
+* [mongoose] npm install --save mongoose 
 
 
 
