@@ -75,6 +75,10 @@ $(function () {
     $("#payload-search").on("keyup", function(){
         getFilteredPayload($("#payload-search").val());
     })
+
+    $("#removeSelectionsBtn").on("click", function(){
+        gridOptions.api.deselectAll();
+    })
 })
 
 let rawData;
