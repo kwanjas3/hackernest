@@ -2,8 +2,8 @@ agGrid.LicenseManager.setLicenseKey("ag-Grid_Evaluation_License_Key_Not_for_Prod
 
 // specify the columns
 var columnDefs = [
-    {headerName: "Manufactuere", field: "company", rowGroup: true, minWidth: 200, rowGroupIndex: 0},
-    {headerName: "Product Name", field: "productName", minWidth: 100, width: 100, rowGroup: true, rowGroupIndex: 1},
+    {headerName: "Manufactuere", field: "company", rowGroup: true, minWidth: 200, rowGroupIndex: 0, hide: true},
+    {headerName: "Product Name", field: "productName", minWidth: 100, width: 100, rowGroup: true, rowGroupIndex: 1, hide: true},
     {headerName: "Feed Type", field: "feedType", checkboxSelection: true, minWidth: 100, width: 100},
     {headerName: "Shape and Size", field: "shapeSize", minWidth: 100, width: 100},
     {headerName: "Fish Weight", field: "fishWeight", minWidth: 100, width: 100},
