@@ -56,7 +56,7 @@ function compareRows(data) {
 
         '<div class ="row">' +
         '<div class="col-md-2 content ">' +
-        '<Strong>Price ($USD / kg): </Strong><br>' +
+        '<Strong>Price <br> ($USD / kg): </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content priceCell1" align="center">' +
         '$<%- data[0].priceKgUSD %> <br>' +

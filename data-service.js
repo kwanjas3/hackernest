@@ -18,7 +18,7 @@ var fishFeedSchema = new Schema({
     "priceKgUSD": String
 });
 
-/*
+
 //Defined in initialize;
 // let Feed;
 let Feed;
@@ -51,7 +51,7 @@ module.exports.findAll = function() {
         Feed.find()
         .exec()
         .then(result => {
-          Payload = JSON.stringify(result);
+          Payload = JSON.parse(result);
           resolve(Payload);
         })
         .catch(err => {
@@ -60,19 +60,18 @@ module.exports.findAll = function() {
     });
 }
 
-// get data for specified company by company name
-module.exports.getCompany = (comp)=>{
-    return new Promise ((resolve, reject)=>{
-        Feed.find({companyName: comp})
-        .exec()
-        .then((data)=>{
-            console.log(data);
-            resolve(data);
-        })
-        .catch((err)=>{
-            console.log(err);
-            reject();
-        });
-    });
-}
-*/
+// // get data for specified company by company name
+// module.exports.getCompany = (comp)=>{
+//     return new Promise ((resolve, reject)=>{
+//         Feed.find({companyName: comp})
+//         .exec()
+//         .then((data)=>{
+//             console.log(data);
+//             resolve(data);
+//         })
+//         .catch((err)=>{
+//             console.log(err);
+//             reject();
+//         });
+//     });
+// }
