@@ -2,17 +2,17 @@ agGrid.LicenseManager.setLicenseKey("ag-Grid_Evaluation_License_Key_Not_for_Prod
 
 // specify the columns
 var columnDefs = [
-    {headerName: "Manufactuere", field: "company", rowGroup: true, minWidth: 200, rowGroupIndex: 0, hide: true},
-    {headerName: "Product Name", field: "productName", minWidth: 100, width: 100, rowGroup: true, rowGroupIndex: 1, hide: true},
-    {headerName: "Feed Type", field: "feedType", checkboxSelection: true, minWidth: 100, width: 100},
-    {headerName: "Shape and Size", field: "shapeSize", minWidth: 100, width: 100},
-    {headerName: "Fish Weight", field: "fishWeight", minWidth: 100, width: 100},
-    {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100},
-    {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100},
-    {headerName: "Ingredient", field: "ingredient", minWidth: 100, width: 100},
-    {headerName: "Packaging kg", field: "packagingKg", minWidth: 100, width: 100},
-    {headerName: "Price / kg (USD)", field: "priceKgUSD", minWidth: 100, width: 100},
-    {headerName: "Protein Source", field: "proteinSources", minWidth: 100, width: 100}
+    {headerName: "Manufactuere", field: "company", rowGroup: true, minWidth: 200, rowGroupIndex: 0, hide: true, filter: 'agNumberColumnFilter'},
+    {headerName: "Product Name", field: "productName", minWidth: 100, width: 100, rowGroup: true, rowGroupIndex: 1, hide: true, filter:'agTextColumnFilter'},
+    {headerName: "Feed Type", field: "feedType", checkboxSelection: true, minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Shape and Size", field: "shapeSize", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Fish Weight", field: "fishWeight", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Ingredient", field: "ingredient", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Packaging kg", field: "packagingKg", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Price / kg (USD)", field: "priceKgUSD", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
+    {headerName: "Protein Source", field: "proteinSources", minWidth: 100, width: 100, filter:'agTextColumnFilter'}
 ];
 
 
@@ -388,6 +388,10 @@ function onSelectionChanged() {
 // used in our jasmine test
 function selectAllRows() {
     gridOptions.api.selectAll();
+}
+
+function onFilterTextBoxChanged() {
+    gridOptions.api.setQuickFilter(document.getElementById('filter-text-box').value);
 }
 
 /*
