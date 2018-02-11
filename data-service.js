@@ -3,7 +3,6 @@ let Schema = mongoose.Schema;
 
 var fishFeedSchema = new Schema({
     "companyName": String,
-    "fishSpecies": String,
     "productName": String,
     "feedType": String, 
     "shapeSize": String,
