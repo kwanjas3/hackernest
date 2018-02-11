@@ -48,10 +48,6 @@ body{
      padding:0 5px;	
  }
 
- .modal-body {
-    overflow:auto;
-}
-
 
 .content{
     height: 50px;
@@ -59,33 +55,21 @@ body{
     
 }
 
-.modal-body div .row div {
-    padding: 0;
-    margin-bottom: 4px;
-    border-radius: 5px;
-}
-
-
+/*
 .modal-content {
     padding-right: 10px;
+}
+
+.modal-body .row .col-md-5 {
+    padding: 0;
+    text-align: center;
+    padding: 7px 2px;
 }
 
 .modal-body .row {
     display: flex;
 }
 
-.modal-body .row div{
-    padding: 0;
-    text-align: center;
-    padding: 7px 2px;
-}
-.modal-body .row .col-sm-2 {
-    width: 10%;
-}
-.modal-body .row .col-sm-5 {
-    width: 45%;
-}
-
 .modal-body .row .col-md-5:nth-child(2){
     border-right: 1px solid #555;
-}
+}*/
