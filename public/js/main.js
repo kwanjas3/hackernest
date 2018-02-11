@@ -122,10 +122,10 @@ function compareRows(data) {
         '<Strong>Protein Sources: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content proteinSourceCell1" align="center">' +
-        '<%- data[0].ingredient %> <br>' +
+        '<%- data[0].proteinSources %> <br>' +
         '</div>' +
         '<div class="col-md-5 content proteinSourceCell2" align="center">' +
-        '<%- data[1].ingredient %> <br>' +
+        '<%- data[1].proteinSources %> <br>' +
         '</div>' +
         '</div>' +
         '</div>' 
@@ -161,14 +161,14 @@ function highlightBenefits(data) {
         $(".priceCell1").css("color", "yellow");
     }
 
-    if (data[0].packagingKg > data[1].packagingKg) {
+    if (parseInt(data[0].proteinSources) > parseInt(data[1].proteinSources)) {
         $(".proteinSourceCell1").css("background-color", "green");
         $(".proteinSourceCell1").css("color", "yellow");
 
         $(".proteinSourceCell2").css("background-color", "red");
         $(".proteinSourceCell2").css("color", "yellow");
 
-    } else if (data[0].packagingKg == data[1].packagingKg) {
+    } else if (parseInt(data[0].proteinSources) == parseInt(data[1].proteinSources)) {
         $(".proteinSourceCell1").css("background-color", "orange");
         $(".proteinSourceCell1").css("color", "yellow");
 
@@ -182,4 +182,5 @@ function highlightBenefits(data) {
         $(".proteinSourceCell1").css("background-color", "red");
         $(".proteinSourceCell1").css("color", "yellow");
     }
+    console.log(parseFloat(data[0].proteinSources));
 }
