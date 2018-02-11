@@ -3,7 +3,7 @@ let selectRows;
 $(function () {
     console.log("jQuery ready");
     $("#compareBtn").on('click', function () {
-        $("#dangerNotice").empty();
+        // $(".potentialAlert").empty();
         selectRows = onSelectionChanged();
 
         if (selectRows.length == 2) {
@@ -11,9 +11,13 @@ $(function () {
         }
 
         else {
-            $("#dangerNotice").html("<div class='alert alert-danger alert-dismissable fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
+            $(".potentialAlert div").removeClass("hidden");
+
+            setTimeout(function() {
+                $(".potentialAlert div").addClass("hidden");
+            }, 3000);
         }
-    })
+    });
 
     $("#expandBtn").addClass("disabled");
 
@@ -29,6 +33,8 @@ function showModal(title, message) {
 
 function compareRows(data) {
 
+    console.log(data[0].proteinSources);
+
     let displayTemplate = _.template(
         `
         <div class="row">
@@ -36,10 +42,14 @@ function compareRows(data) {
                 <strong>Name: </strong>
             </div>
             <div class="col-sm-5 col-md-5">
-                ${data[0].productName}
+                <a href="https://www.google.ca" target="_blank">
+                    ${data[0].productName}
+                </a>
             </div>
             <div class="col-sm-5 col-md-5">
-                ${data[1].productName}
+                <a href="https://www.google.ca" target="_blank">
+                    ${data[1].productName}
+                </a>
             </div>
         </div>
 
@@ -126,6 +136,18 @@ function compareRows(data) {
                 ${data[1].proteinSources}
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                <strong>Env Impct: </strong>
+            </div>
+            <div class="col-sm-5 col-md-5 score1">
+                
+            </div>
+            <div class="col-sm-5 col-md-5 score2">
+                
+            </div>
+        </div>
         `
     )
 
@@ -162,23 +184,36 @@ function highlightBenefits(data) {
     if (parseInt(data[0].proteinSources) > parseInt(data[1].proteinSources)) {
         $(".proteinSourceCell1").css("background-color", "green");
         $(".proteinSourceCell1").css("color", "yellow");
+        $(".score2").css({"background": "green", "color": "yellow"});
+        $(".score2").html(`Score: ${data[1].proteinSources/2}`);
 
         $(".proteinSourceCell2").css("background-color", "red");
         $(".proteinSourceCell2").css("color", "yellow");
+        $(".score1").css({"background": "red", "color": "yellow"});
+        $(".score1").html(`Score: ${data[0].proteinSources/2}`);
 
     } else if (parseInt(data[0].proteinSources) == parseInt(data[1].proteinSources)) {
         $(".proteinSourceCell1").css("background-color", "orange");
         $(".proteinSourceCell1").css("color", "yellow");
+        $(".score1").css({"background": "orange", "color": "yellow"});
+        $(".score1").html(`Score: ${data[0].proteinSources/2}`);
 
         $(".proteinSourceCell2").css("background-color", "orange");
         $(".proteinSourceCell2").css("color", "yellow");
+        $(".score2").css({"background": "orange", "color": "yellow"});
+        $(".score2").html(`Score: ${data[1].proteinSources/2}`);
     }
     else {
         $(".proteinSourceCell2").css("background-color", "green");
         $(".proteinSourceCell2").css("color", "yellow");
+        $(".score1").css({"background": "green", "color": "yellow"});
+        $(".score1").html(`Score: ${data[0].proteinSources/2}`);
 
         $(".proteinSourceCell1").css("background-color", "red");
         $(".proteinSourceCell1").css("color", "yellow");
+        $(".score2").css({"background": "red", "color": "yellow"});
+        $(".score2").html(`Score: ${data[1].proteinSources/2}`);
+
     }
-    console.log(parseFloat(data[0].proteinSources));
+    // console.log(parseFloat(data[0].proteinSources));
 }
