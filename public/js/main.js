@@ -1,23 +1,3 @@
-let selectRows;
-
-$(function () {
-    console.log("jQuery ready");
-
-    $("#compareBtn").on('click', function () {
-        $(".potentialAlert").empty();
-        selectRows = onSelectionChanged();
-
-        if (selectRows.length == 2) {
-            compareRows(selectRows);
-        }
-
-        else {
-            $(".potentialAlert").html("<div class='alert alert-danger'><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
-        }
-    })
-
-}) //jQuery rdy
-
 function showModal(title, message) {
     $('.modal-title').empty();
     $('.modal-body').empty();
@@ -31,7 +11,7 @@ function compareRows(data) {
     let displayTemplate = _.template(
         '<div class="col-md-12">' +
         '<div class ="row">' +
-        '<div class="col-md-2 content ">' +
+        '<div class="col-md-2 content" align="right">' +
         '<Strong>Name: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content " align="center">' +
@@ -42,8 +22,34 @@ function compareRows(data) {
         '</div>' +
         '</div>' +
 
+        '<div class="col-md-12">' +
         '<div class ="row">' +
-        '<div class="col-md-2 content ">' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Company: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[0].company %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[1].company %> <br>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class="col-md-12">' +
+        '<div class ="row">' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Shape size: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[0].shapeSize %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[1].shapeSize %> <br>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class ="row">' +
+        '<div class="col-md-2 content " align="right">' +
         '<Strong>Feed Type: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content" align="center">' +
@@ -55,8 +61,11 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
+
         '<div class="col-md-2 content ">' +
-        '<Strong>Price ($USD / kg): </Strong><br>' +
+        '<Strong>Price <br> ($USD / kg): </Strong><br>' +
+
+
         '</div>' +
         '<div class="col-md-5 content priceCell1" align="center">' +
         '$<%- data[0].priceKgUSD %> <br>' +
@@ -67,7 +76,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content">' +
+        '<div class="col-md-2 content" align="right">' +
         '<Strong>Packaging (kg): </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content packagingKgCell1" align="center">' +
@@ -75,6 +84,32 @@ function compareRows(data) {
         '</div>' +
         '<div class="col-md-5 content packagingKgCell2" align="center">' +
         '<%- data[1].packagingKg %> <br>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class ="row" >' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Ingredients: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content ingredientCell1" align="center">' +
+        '<%- data[0].ingredient %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content ingredientCell2" align="center">' +
+        '<%- data[1].ingredient %> <br>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class ="row" >' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Protein Sources: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content proteinSourceCell1" align="center">' +
+        '<%- data[0].proteinSources %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content proteinSourceCell2" align="center">' +
+        '<%- data[1].proteinSources %> <br>' +
         '</div>' +
         '</div>' +
         '</div>'
@@ -110,26 +145,26 @@ function highlightBenefits(data) {
         $(".priceCell1").css("color", "yellow");
     }
 
-    if (data[0].packagingKg > data[1].packagingKg) {
-        $(".packagingKgCell1").css("background-color", "green");
-        $(".packagingKgCell1").css("color", "yellow");
+    if (parseInt(data[0].proteinSources) > parseInt(data[1].proteinSources)) {
+        $(".proteinSourceCell1").css("background-color", "green");
+        $(".proteinSourceCell1").css("color", "yellow");
 
-        $(".packagingKgCell2").css("background-color", "red");
-        $(".packagingKgCell2").css("color", "yellow");
+        $(".proteinSourceCell2").css("background-color", "red");
+        $(".proteinSourceCell2").css("color", "yellow");
 
-    } else if (data[0].packagingKg == data[1].packagingKg) {
-        $(".packagingKgCell1").css("background-color", "orange");
-        $(".packagingKgCell1").css("color", "yellow");
+    } else if (parseInt(data[0].proteinSources) == parseInt(data[1].proteinSources)) {
+        $(".proteinSourceCell1").css("background-color", "orange");
+        $(".proteinSourceCell1").css("color", "yellow");
 
-        $(".packagingKgCell2").css("background-color", "orange");
-        $(".packagingKgCell2").css("color", "yellow");
+        $(".proteinSourceCell2").css("background-color", "orange");
+        $(".proteinSourceCell2").css("color", "yellow");
     }
     else {
-        $(".packagingKgCell2").css("background-color", "green");
-        $(".packagingKgCell2").css("color", "yellow");
+        $(".proteinSourceCell2").css("background-color", "green");
+        $(".proteinSourceCell2").css("color", "yellow");
 
-        $(".packagingKgCell1").css("background-color", "red");
-        $(".packagingKgCell1").css("color", "yellow");
+        $(".proteinSourceCell1").css("background-color", "red");
+        $(".proteinSourceCell1").css("color", "yellow");
     }
-
 }
+
