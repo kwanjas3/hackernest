@@ -2,7 +2,6 @@ let selectRows;
 
 $(function () {
     console.log("jQuery ready");
-
     $("#compareBtn").on('click', function () {
         $(".potentialAlert").empty();
         selectRows = onSelectionChanged();
@@ -31,7 +30,7 @@ function compareRows(data) {
     let displayTemplate = _.template(
         '<div class="col-md-12">' +
         '<div class ="row">' +
-        '<div class="col-md-2 content" align="center">' +
+        '<div class="col-md-2 content" align="right">' +
         '<Strong>Name: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content " align="center">' +
@@ -41,9 +40,35 @@ function compareRows(data) {
         '<%- data[1].productName %> <br>' +
         '</div>' +
         '</div>' +
+ 
+        '<div class="col-md-12">' +
+        '<div class ="row">' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Company: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[0].company %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[1].company %> <br>' +
+        '</div>' +
+        '</div>' +
+        
+        '<div class="col-md-12">' +
+        '<div class ="row">' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Shape size: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[0].shapeSize %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content " align="center">' +
+        '<%- data[1].shapeSize %> <br>' +
+        '</div>' +
+        '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content " align="center">' +
+        '<div class="col-md-2 content " align="right">' +
         '<Strong>Feed Type: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content" align="center">' +
@@ -55,7 +80,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content " align="center">' +
+        '<div class="col-md-2 content " align="right">' +
         '<Strong>Price ($USD / kg): </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content priceCell1" align="center">' +
@@ -67,7 +92,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row">' +
-        '<div class="col-md-2 content" align="center">' +
+        '<div class="col-md-2 content" align="right">' +
         '<Strong>Packaging (kg): </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content packagingKgCell1" align="center">' +
@@ -80,7 +105,7 @@ function compareRows(data) {
         '</div>' +
 
         '<div class ="row" >' +
-        '<div class="col-md-2 content" align="center">' +
+        '<div class="col-md-2 content" align="right">' +
         '<Strong>Ingredients: </Strong><br>' +
         '</div>' +
         '<div class="col-md-5 content ingredientCell1" align="center">' +
