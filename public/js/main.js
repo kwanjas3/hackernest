@@ -15,6 +15,8 @@ $(function () {
         }
     })
 
+    $("#expandBtn").addClass("disabled");
+
 }) //jQuery rdy
 
 function showModal(title, message) {
@@ -28,110 +30,103 @@ function showModal(title, message) {
 function compareRows(data) {
 
     let displayTemplate = _.template(
-        '<div class="col-md-12">' +
-        '<div class ="row">' +
-        '<div class="col-md-2 content" align="right">' +
-        '<Strong>Name: </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[0].productName %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[1].productName %> <br>' +
-        '</div>' +
-        '</div>' +
- 
-        '<div class="col-md-12">' +
-        '<div class ="row">' +
-        '<div class="col-md-2 content" align="right">' +
-        '<Strong>Company: </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[0].company %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[1].company %> <br>' +
-        '</div>' +
-        '</div>' +
-        
-        '<div class="col-md-12">' +
-        '<div class ="row">' +
-        '<div class="col-md-2 content" align="right">' +
-        '<Strong>Shape size: </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[0].shapeSize %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[1].shapeSize %> <br>' +
-        '</div>' +
-        '</div>' +
+        `
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                <strong>Name: </strong>
+            </div>
+            <div class="col-sm-5 col-md-5">
+                ${data[0].productName}
+            </div>
+            <div class="col-sm-5 col-md-5">
+                ${data[1].productName}
+            </div>
+        </div>
 
-        '<div class ="row">' +
-        '<div class="col-md-2 content " align="right">' +
-        '<Strong>Feed Type: </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content" align="center">' +
-        '<%- data[0].feedType %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content " align="center">' +
-        '<%- data[1].feedType %> <br>' +
-        '</div>' +
-        '</div>' +
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                <strong>Company: </strong>
+            </div>
+            <div class="col-md-5 col-sm-5">
+                ${data[0].company}
+            </div>
+            <div class="col-md-5 col-sm-5">
+                ${data[1].company}
+            </div>
+        </div>
 
-        '<div class ="row">' +
+        <div class="row">
+            <div class="col-sm-2 col-md-2 ">
+                <strong>Shape Size: </strong>
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[0].shapeSize}
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[1].shapeSize}
+            </div>
+        </div>
 
-        '<div class="col-md-2 content ">' +
-        '<Strong>Price <br> ($USD / kg): </Strong><br>' +
+        <div class="row">
+            <div class="col-sm-2 col-md-2 ">
+                <strong>Feed Type: </strong>
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[0].feedType}
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[1].feedType}
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-2 col-md-2 ">
+                <strong>Price <br> ($USD/Kg): </strong>
+            </div>
+            <div class="col-sm-5 col-md-5  priceCell1">
+                ${data[0].priceKgUSD}
+            </div>
+            <div class="col-sm-5 col-md-5  priceCell2">
+                ${data[1].priceKgUSD}
+            </div>
+        </div>
 
-        '</div>' +
-        '<div class="col-md-5 content priceCell1" align="center">' +
-        '$<%- data[0].priceKgUSD %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content priceCell2" align="center">' +
-        '$<%- data[1].priceKgUSD %> <br>' +
-        '</div>' +
-        '</div>' +
+        <div class="row">
+            <div class="col-sm-2 col-md-2 ">
+                <strong>Packaging (Kg): </strong>
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[0].packagingKg}
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[1].packagingKg}
+            </div>
+        </div>
 
-        '<div class ="row">' +
-        '<div class="col-md-2 content" align="right">' +
-        '<Strong>Packaging (kg): </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content packagingKgCell1" align="center">' +
-        '<%- data[0].packagingKg %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content packagingKgCell2" align="center">' +
-        '<%- data[1].packagingKg %> <br>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
+        <div class="row">
+            <div class="col-sm-2 col-md-2 ">
+                <strong>Ingredients: </strong>
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[0].ingredient}
+            </div>
+            <div class="col-sm-5 col-md-5 ">
+                ${data[1].ingredient}
+            </div>
+        </div>
 
-        '<div class ="row" >' +
-        '<div class="col-md-2 content" align="right">' +
-        '<Strong>Ingredients: </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content ingredientCell1" align="center">' +
-        '<%- data[0].ingredient %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content ingredientCell2" align="center">' +
-        '<%- data[1].ingredient %> <br>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-
-        '<div class ="row" >' +
-        '<div class="col-md-2 content" align="right">' +
-        '<Strong>Protein Sources: </Strong><br>' +
-        '</div>' +
-        '<div class="col-md-5 content proteinSourceCell1" align="center">' +
-        '<%- data[0].proteinSources %> <br>' +
-        '</div>' +
-        '<div class="col-md-5 content proteinSourceCell2" align="center">' +
-        '<%- data[1].proteinSources %> <br>' +
-        '</div>' +
-        '</div>' +
-        '</div>' 
+        <div class="row">
+            <div class="col-sm-2 col-md-2 ">
+                <strong>Protein Sources: </strong>
+            </div>
+            <div class="col-sm-5 col-md-5  proteinSourceCell1">
+                ${data[0].proteinSources}
+            </div>
+            <div class="col-sm-5 col-md-5  proteinSourceCell2">
+                ${data[1].proteinSources}
+            </div>
+        </div>
+        `
     )
 
     let displayContent = displayTemplate({ 'data': selectRows })

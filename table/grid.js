@@ -35,8 +35,6 @@ var gridOptions = {
 let ajaxData;
 function initializeAJAX() {
     return new Promise((resolve, reject) => {
-
-        console.log("initializing ajax");
         $.ajax({
             url: "https://api.mlab.com/api/1/databases/fishhack/collections/fishfeeds?apiKey=aTV755BUwb3h04SezC5ds5X3hbHpHZ4f",
             type: "GET",
@@ -44,7 +42,6 @@ function initializeAJAX() {
         })
             .done((data) => {
                 ajaxData = data;
-                console.log(ajaxData);
                 resolve(ajaxData);
             })
             .fail((err) => {
@@ -74,6 +71,22 @@ $(function () {
 
     $("#payload-search").on("keyup", function(){
         getFilteredPayload($("#payload-search").val());
+    })
+
+    $("#removeSelectionsBtn").on("click", function(){
+        gridOptions.api.deselectAll();
+    })
+
+    $("#collapseBtn").on("click", function() {
+        gridOptions.api.collapseAll();
+        $("#expandBtn").removeClass("disabled");
+        $(this).addClass("disabled");
+    })
+
+    $("#expandBtn").on("click", function() {
+        gridOptions.api.expandAll();
+        $("#collapseBtn").removeClass("disabled");
+        $(this).addClass("disabled");
     })
 })
 
