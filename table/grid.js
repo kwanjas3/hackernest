@@ -1,20 +1,20 @@
+agGrid.LicenseManager.setLicenseKey("ag-Grid_Evaluation_License_Key_Not_for_Production_100Devs2_April_2018__MTUyMjYyMzYwMDAwMA==e8bb27c4f0c9ed34bce6c68b868694f2");
+
 // specify the columns
 var columnDefs = [
-    {headerName: "Product Name", field: "productName", checkboxSelection: true},
-    {headerName: "Feed Type", field: "feedType"},
-    {headerName: "Shape and Size", field: "shapeSize"},
-    {headerName: "Fish Weight", field: "fishWeight"},
+    {headerName: "Manufactuere", field: "company", rowGroup: true, minWidth: 200, rowGroupIndex: 0},
+    {headerName: "Product Name", field: "productName", minWidth: 100, width: 100, rowGroup: true, rowGroupIndex: 1},
+    {headerName: "Feed Type", field: "feedType", checkboxSelection: true, minWidth: 100, width: 100},
+    {headerName: "Shape and Size", field: "shapeSize", minWidth: 100, width: 100},
+    {headerName: "Fish Weight", field: "fishWeight", minWidth: 100, width: 100},
     {headerName: "Compostion", children: [
-        {headerName: "Drymat Min", field: "drymatmin" },
-        {headerName: "Protein Min", field: "proteinmin"},
-        {headerName: "Fat Min", field: "fatmin"},
-        {headerName: "Fiber Max", field: "fibermax"},
-        {headerName: "Ash Max", field: "ashmax"}
+        {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100},
+        {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100},
     ]},
-    {headerName: "Ingredient", field: "ingredient"},
-    {headerName: "Packaging kg", field: "packagingKg"},
-    {headerName: "priceKgUSD", field: "priceKgUSD"},
-    {headerName: "Manufactuere", field: "company"}
+    {headerName: "Ingredient", field: "ingredient", minWidth: 100, width: 100},
+    {headerName: "Packaging kg", field: "packagingKg", minWidth: 100, width: 100},
+    {headerName: "Price / kg (USD)", field: "priceKgUSD", minWidth: 100, width: 100},
+    {headerName: "Protein Source", field: "proteinSources", minWidth: 100, width: 100}
 ];
 
 
@@ -373,13 +373,14 @@ var gridOptions = {
     enableSorting: true,
     enableFilter: true,
     enableColResize: true,
+    rowSelection: 'multiple',
+    onSelectionChanged: onSelectionChanged,
     suppressRowClickSelection: true,
+    animateRows: true,
+    groupUseEntireRow:true,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
     },
-    rowSelection: 'multiple',
-    onSelectionChanged: onSelectionChanged,
-
 };
 
 function onSelectionChanged() {
@@ -390,6 +391,26 @@ function onSelectionChanged() {
 function selectAllRows() {
     gridOptions.api.selectAll();
 }
+
+/*
+function onSelectionChanged() {
+    var selectedRows = gridOptions.api.getSelectedRows();
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    if (selectedRows.length > 2) {
+        $('#exampleModal').modal('show');
+        for (let i = 2; i < selectedNodes.length; i ++) {
+            selectedNodes[i].setSelected(false);
+        }
+    }
+
+    var selectedRowsString = '';
+    selectedRows.forEach( function(selectedRow, index) {
+        if (index!==0) {
+            selectedRowsString += ', ';
+        }
+        selectedRowsString += selectedRow.company;
+    });
+} */
 
 // wait for the document to be loaded, otherwise ag-Grid will not find the div in the document.
 document.addEventListener("DOMContentLoaded", function () {

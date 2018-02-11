@@ -9,6 +9,8 @@
   "author": "FishnChips",
   "license": "ISC",
   "dependencies": {
+    "ag-grid": "^16.0.1",
+    "ag-grid-enterprise": "^16.0.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",

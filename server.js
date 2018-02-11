@@ -35,9 +35,11 @@ app.listen(HTTP_PORT, ()=>{
     console.log("Listening on " + HTTP_PORT);
 });
 
-ds.initialize();
+// ds.initialize();
 
 app.get("/", (req, res)=>{
+    res.render("home");
+    /*
     ds.findAll()
     .then((data)=>{
         res.render("home", {data: data});
@@ -45,13 +47,14 @@ app.get("/", (req, res)=>{
     })
     .catch((err)=>{
         console.log(err);
-    });
+    });*/
 });
 
 app.get("/home", (req, res)=>{
+    /*
     ds.getCompany("bbb")
     .then((data)=>{
         res.render("about");
         console.log(data);
-    });
+    });*/
 });
