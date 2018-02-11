@@ -1,32 +1,3 @@
-let selectRows;
-$(function () {
-    $.ajax({
-        url: "https://api.mlab.com/api/1/databases/fishhack/collections/fishfeeds?apiKey=aTV755BUwb3h04SezC5ds5X3hbHpHZ4f",
-        type: "GET",
-        contentType: "application/json"
-    })
-    .done((data)=>{
-        rowData = data;
-    })
-    .fail((err)=>{
-        console.log(typeof(err));
-    });
-    
-    $("#compareBtn").on('click', function () {
-        $(".potentialAlert").empty();
-        selectRows = onSelectionChanged();
-
-        if (selectRows.length == 2) {
-            compareRows(selectRows);
-        }
-
-        else {
-            $(".potentialAlert").html("<div class='alert alert-danger'><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
-        }
-    })
-
-}) //jQuery rdy
-
 function showModal(title, message) {
     $('.modal-title').empty();
     $('.modal-body').empty();
@@ -50,7 +21,7 @@ function compareRows(data) {
         '<%- data[1].productName %> <br>' +
         '</div>' +
         '</div>' +
- 
+
         '<div class="col-md-12">' +
         '<div class ="row">' +
         '<div class="col-md-2 content" align="right">' +
@@ -63,7 +34,7 @@ function compareRows(data) {
         '<%- data[1].company %> <br>' +
         '</div>' +
         '</div>' +
-        
+
         '<div class="col-md-12">' +
         '<div class ="row">' +
         '<div class="col-md-2 content" align="right">' +
@@ -141,7 +112,7 @@ function compareRows(data) {
         '<%- data[1].proteinSources %> <br>' +
         '</div>' +
         '</div>' +
-        '</div>' 
+        '</div>'
     )
 
     let displayContent = displayTemplate({ 'data': selectRows })
@@ -195,21 +166,5 @@ function highlightBenefits(data) {
         $(".proteinSourceCell1").css("background-color", "red");
         $(".proteinSourceCell1").css("color", "yellow");
     }
-    console.log(parseFloat(data[0].proteinSources));
 }
 
-// function getFilteredPayload(filterString) {
-//     let regxString = new RegExp(filterString, 'i');
-//     let filteredPayload = _.filter(rowData, function(row){
-//         if (row.productName.match(regxString) || row.feedType.match(regxString) || row.shapeSize.match(regxString) || 
-//             row.fishWeight.match(regxString) || row.drymatmin.match(regxString) || row.proteinmin.match(regxString) ||
-//             row.fatmin.match(regxString) || row.fibermax.match(regxString) || row.ashmax.match(regxString) || row.ingredient.match(regxString) ||
-//             row.packagingKg.match(regxString) || row.priceKgUSD.match(regxString) || row.company.match(regxString) ||
-//             row.proteinSources.match(regxString)) {
-//                 return row;
-//             }
-//     })
-
-//     console.log(filteredPayload);
-
-// }
