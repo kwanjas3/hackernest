@@ -451,7 +451,6 @@ var gridOptions = {
 };
 
 function getFilteredPayload(filterString) {
-    console.log("Filtering by: " + filterString);
     let regxString = new RegExp(filterString, 'i');
     let filteredPayload = _.filter(ajaxData, function(row){
         if (row.productName.match(regxString) || row.feedType.match(regxString) || row.shapeSize.match(regxString) || 
