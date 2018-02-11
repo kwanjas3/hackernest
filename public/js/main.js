@@ -1,3 +1,22 @@
+let selectRows;
+
+$(function () {
+    console.log("jQuery ready");
+    $("#compareBtn").on('click', function () {
+        $(".potentialAlert").empty();
+        selectRows = onSelectionChanged();
+
+        if (selectRows.length == 2) {
+            compareRows(selectRows);
+        }
+
+        else {
+            $(".potentialAlert").html("<div class='alert alert-danger'><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
+        }
+    })
+
+}) //jQuery rdy
+
 function showModal(title, message) {
     $('.modal-title').empty();
     $('.modal-body').empty();
@@ -21,7 +40,7 @@ function compareRows(data) {
         '<%- data[1].productName %> <br>' +
         '</div>' +
         '</div>' +
-
+ 
         '<div class="col-md-12">' +
         '<div class ="row">' +
         '<div class="col-md-2 content" align="right">' +
@@ -34,7 +53,7 @@ function compareRows(data) {
         '<%- data[1].company %> <br>' +
         '</div>' +
         '</div>' +
-
+        
         '<div class="col-md-12">' +
         '<div class ="row">' +
         '<div class="col-md-2 content" align="right">' +
@@ -112,7 +131,7 @@ function compareRows(data) {
         '<%- data[1].proteinSources %> <br>' +
         '</div>' +
         '</div>' +
-        '</div>'
+        '</div>' 
     )
 
     let displayContent = displayTemplate({ 'data': selectRows })
@@ -166,5 +185,5 @@ function highlightBenefits(data) {
         $(".proteinSourceCell1").css("background-color", "red");
         $(".proteinSourceCell1").css("color", "yellow");
     }
+    console.log(parseFloat(data[0].proteinSources));
 }
-
