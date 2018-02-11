@@ -1,22 +1,27 @@
 agGrid.LicenseManager.setLicenseKey("ag-Grid_Evaluation_License_Key_Not_for_Production_100Devs2_April_2018__MTUyMjYyMzYwMDAwMA==e8bb27c4f0c9ed34bce6c68b868694f2");
 // specify the columns
+
+const title = 'Company: ';
+const product = 'Product: ';
+
 var columnDefs = [
-    {headerName: "Manufactuere", field: "company", rowGroup: true, rowGroupIndex: 0, hide: true, filter: 'agNumberColumnFilter'},
-    {headerName: "Product Name", field: "productName", rowGroup: true, rowGroupIndex: 1, hide: true, filter:'agTextColumnFilter'},
+    {headerName: "Manufactuere", valueGetter: 'title + data.company', rowGroup: true, rowGroupIndex: 0, hide: true, filter: 'agNumberColumnFilter'},
+    {headerName: "Product Name", valueGetter: 'product + data.productName', rowGroup: true, rowGroupIndex: 1, hide: true, filter:'agTextColumnFilter'},
     {headerName: "Feed Type", field: "feedType", checkboxSelection: true, minWidth: 90, width: 90, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Shape & Size", field: "shapeSize", minWidth: 125, width: 125, maxWidth: 125, filter:'agTextColumnFilter'},
     {headerName: "Fish Weight", field: "fishWeight", minWidth: 115, width: 115, maxWidth: 115, filter:'agTextColumnFilter'},
     {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Ingredients", field: "ingredient", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
-    {headerName: "Packaging (kg)", field: "packagingKg", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
-    {headerName: "Price / kg (USD)", field: "priceKgUSD", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
-    {headerName: "Protein Source", field: "proteinSources", minWidth: 100, width: 100, filter:'agTextColumnFilter'}
+    {headerName: "Price / kg", field: "priceKgUSD", minWidth: 100, width: 100, maxWidth: 100, filter:'agTextColumnFilter'},
+    {headerName: "Protein Source", field: "proteinSources", minWidth: 150, width: 150, filter:'agTextColumnFilter', colId: 'proteinSource'},
+    {headerName: "Environment Impact", valueGetter: function (params) {
+        return params.getValue('proteinSource') / 2;
+    }, minWidth: 150, width: 150, }
 ];
 
 var gridOptions = {
     columnDefs: columnDefs,
-    // rowData: ajaxData,
     enableSorting: true,
     enableFilter: true,
     enableColResize: true,
