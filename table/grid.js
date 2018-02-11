@@ -391,6 +391,11 @@ $(function () {
     $("#payload-search").on("keyup", function(){
         getFilteredPayload($("#payload-search").val());
     })
+
+    $("#removeSelectionBtn").on("click", function() {
+        gridOptions.api.deselectAll();
+        //allSelected = false;
+    })  
 })
 let rawData;
 agGrid.LicenseManager.setLicenseKey("ag-Grid_Evaluation_License_Key_Not_for_Production_100Devs2_April_2018__MTUyMjYyMzYwMDAwMA==e8bb27c4f0c9ed34bce6c68b868694f2");
@@ -423,7 +428,7 @@ var columnDefs = [
     { headerName: "Shape and Size", field: "shapeSize", minWidth: 100, width: 100 },
     { headerName: "Fish Weight", field: "fishWeight", minWidth: 100, width: 100 },
     {
-        headerName: "Compostion", children: [
+        headerName: "Composition", children: [
             { headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100 },
             { headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100 },
         ]
