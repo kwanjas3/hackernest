@@ -76,6 +76,18 @@ $(function () {
     $("#removeSelectionsBtn").on("click", function(){
         gridOptions.api.deselectAll();
     })
+
+    $("#collapseBtn").on("click", function() {
+        gridOptions.api.collapseAll();
+        $("#expandBtn").removeClass("disabled");
+        $(this).addClass("disabled");
+    })
+
+    $("#expandBtn").on("click", function() {
+        gridOptions.api.expandAll();
+        $("#collapseBtn").removeClass("disabled");
+        $(this).addClass("disabled");
+    })
 })
 
 let rawData;
