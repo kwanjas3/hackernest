@@ -14,8 +14,10 @@ var columnDefs = [
     {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Ingredients", field: "ingredient", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
     {headerName: "Price / kg", field: "priceKgUSD", minWidth: 100, width: 100, maxWidth: 100, filter:'agTextColumnFilter'},
-    {headerName: "Protein Source", field: "proteinSources", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
-    {headerName: "Environment Impact", valueGetter: "" }
+    {headerName: "Protein Source", field: "proteinSources", minWidth: 150, width: 150, filter:'agTextColumnFilter', colId: 'proteinSource'},
+    {headerName: "Environment Impact", valueGetter: function (params) {
+        return params.getValue('proteinSource') / 2;
+    }, minWidth: 150, width: 150, }
 ];
 
 var gridOptions = {
