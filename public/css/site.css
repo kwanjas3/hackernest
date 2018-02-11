@@ -39,6 +39,7 @@ body{
      background-color: #444;
      color: #eee;
      padding:10px;
+     margin-top: 20px;
  }
  
  footer h2{
@@ -55,12 +56,21 @@ body{
     
 }
 
-/*
+
 .modal-content {
     padding-right: 10px;
 }
 
-.modal-body .row .col-md-5 {
+.modal-body .row {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.modal-body .row:last-child{
+    border-bottom: none;
+}
+
+.modal-body .row div{
     padding: 0;
     text-align: center;
     padding: 7px 2px;
@@ -72,4 +82,11 @@ body{
 
 .modal-body .row .col-md-5:nth-child(2){
     border-right: 1px solid #555;
-}*/
+}
+
+.hidden {
+    display: none;
+}
+.show {
+    display: block;
+}
