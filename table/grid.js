@@ -9,7 +9,6 @@ var columnDefs = [
     {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Ingredients", field: "ingredient", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
-    {headerName: "Packaging (kg)", field: "packagingKg", minWidth: 100, width: 100, maxWidth: 110, filter:'agTextColumnFilter'},
     {headerName: "Price / kg (USD)", field: "priceKgUSD", minWidth: 100, width: 100, filter:'agTextColumnFilter'},
     {headerName: "Protein Source", field: "proteinSources", minWidth: 100, width: 100, filter:'agTextColumnFilter'}
 ];
