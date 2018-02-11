@@ -7,9 +7,6 @@ const bodyParser = require('body-parser');
 const ds = require('./data-service.js');
 var _ = require('lodash');
 
-var enterprise = require('ag-grid-enterprise');
-enterprise.LicenseManager.setLicenseKey('ag-Grid_Evaluation_License_Key_Not_for_Production_100Devs2_April_2018__MTUyMjYyMzYwMDAwMA==e8bb27c4f0c9ed34bce6c68b868694f2');
-
 app.use(express.static("public"));
 
 app.use(express.static("table"));
