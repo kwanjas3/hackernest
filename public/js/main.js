@@ -3,7 +3,7 @@ let selectRows;
 $(function () {
     console.log("jQuery ready");
     $("#compareBtn").on('click', function () {
-        $(".potentialAlert").empty();
+        $("#dangerNotice").empty();
         selectRows = onSelectionChanged();
 
         if (selectRows.length == 2) {
@@ -11,7 +11,7 @@ $(function () {
         }
 
         else {
-            $(".potentialAlert").html("<div class='alert alert-danger'><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
+            $("#dangerNotice").html("<div class='alert alert-danger alert-dismissable fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Error!</strong> Please select only two kinds of feed to compare.</div>")
         }
     })
 
