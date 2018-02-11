@@ -1,26 +1,24 @@
+const mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-
-var feedSchema = new Schema({
-  "companyName": String,
-  "productName": String,
-  "feedType": String,
-  "shapeSize": String,
-  "range": String,
-  "dryMatMin": String,
-  "proteinMin": String,
-  "fatMin": String,
-  "fiberMax": String,
-  "ashMax": String,
-  "ingredients": String,
-  "packagingKg": String,
-  "priceKg": String,
-  "feedSpecies": String
-
+var fishFeedSchema = new Schema({
+    "companyName": String,
+    "fishSpecies": String,
+    "productName": String,
+    "feedType": String, 
+    "shapeSize": String,
+    "fishWeight": String,
+    "drymatmin": String,
+    "proteinmin": String,
+    "fatmin": String,
+    "fibermax": String,
+    "ashmax": String,
+    "ingredient": String,
+    "packagingKg": String,
+    "priceKgUSD": String
 });
 
-
+/*
 //Defined in initialize;
 // let Feed;
 let Feed;
@@ -77,3 +75,4 @@ module.exports.getCompany = (comp)=>{
         });
     });
 }
+*/
