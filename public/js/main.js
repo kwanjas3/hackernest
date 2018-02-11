@@ -115,7 +115,20 @@ function compareRows(data) {
         '<%- data[1].ingredient %> <br>' +
         '</div>' +
         '</div>' +
-        '</div>'
+        '</div>' +
+
+        '<div class ="row" >' +
+        '<div class="col-md-2 content" align="right">' +
+        '<Strong>Protein Sources: </Strong><br>' +
+        '</div>' +
+        '<div class="col-md-5 content proteinSourceCell1" align="center">' +
+        '<%- data[0].ingredient %> <br>' +
+        '</div>' +
+        '<div class="col-md-5 content proteinSourceCell2" align="center">' +
+        '<%- data[1].ingredient %> <br>' +
+        '</div>' +
+        '</div>' +
+        '</div>' 
     )
 
     let displayContent = displayTemplate({ 'data': selectRows })
@@ -149,24 +162,24 @@ function highlightBenefits(data) {
     }
 
     if (data[0].packagingKg > data[1].packagingKg) {
-        $(".packagingKgCell1").css("background-color", "green");
-        $(".packagingKgCell1").css("color", "yellow");
+        $(".proteinSourceCell1").css("background-color", "green");
+        $(".proteinSourceCell1").css("color", "yellow");
 
-        $(".packagingKgCell2").css("background-color", "red");
-        $(".packagingKgCell2").css("color", "yellow");
+        $(".proteinSourceCell2").css("background-color", "red");
+        $(".proteinSourceCell2").css("color", "yellow");
 
     } else if (data[0].packagingKg == data[1].packagingKg) {
-        $(".packagingKgCell1").css("background-color", "orange");
-        $(".packagingKgCell1").css("color", "yellow");
+        $(".proteinSourceCell1").css("background-color", "orange");
+        $(".proteinSourceCell1").css("color", "yellow");
 
-        $(".packagingKgCell2").css("background-color", "orange");
-        $(".packagingKgCell2").css("color", "yellow");
+        $(".proteinSourceCell2").css("background-color", "orange");
+        $(".proteinSourceCell2").css("color", "yellow");
     }
     else {
-        $(".packagingKgCell2").css("background-color", "green");
-        $(".packagingKgCell2").css("color", "yellow");
+        $(".proteinSourceCell2").css("background-color", "green");
+        $(".proteinSourceCell2").css("color", "yellow");
 
-        $(".packagingKgCell1").css("background-color", "red");
-        $(".packagingKgCell1").css("color", "yellow");
+        $(".proteinSourceCell1").css("background-color", "red");
+        $(".proteinSourceCell1").css("color", "yellow");
     }
 }
