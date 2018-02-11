@@ -25,6 +25,7 @@ var gridOptions = {
     suppressRowClickSelection: true,
     animateRows: true,
     groupUseEntireRow: true,
+    groupDefaultExpanded: -1,
     onGridReady: function () {
         gridOptions.api.sizeColumnsToFit();
     },
