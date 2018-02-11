@@ -366,7 +366,7 @@ var columnDefs = [
 //     },    
 // ];
 
-let PayLoad;
+let rowData;
 
     $.ajax({
         url: "https://api.mlab.com/api/1/databases/fishhack/collections/fishfeeds?apiKey=aTV755BUwb3h04SezC5ds5X3hbHpHZ4f",
@@ -374,7 +374,7 @@ let PayLoad;
         contentType: "application/json"
     })
     .done((data)=>{
-        PayLoad = data;
+        rowData = data;
     })
     .fail((err)=>{
         console.log(typeof(err));
