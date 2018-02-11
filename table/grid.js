@@ -7,10 +7,8 @@ var columnDefs = [
     {headerName: "Feed Type", field: "feedType", checkboxSelection: true, minWidth: 100, width: 100},
     {headerName: "Shape and Size", field: "shapeSize", minWidth: 100, width: 100},
     {headerName: "Fish Weight", field: "fishWeight", minWidth: 100, width: 100},
-    {headerName: "Compostion", children: [
-        {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100},
-        {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100},
-    ]},
+    {headerName: "Drymat Min", field: "drymatmin", minWidth: 100, width: 100},
+    {headerName: "Protein Min", field: "proteinmin", minWidth: 100, width: 100},
     {headerName: "Ingredient", field: "ingredient", minWidth: 100, width: 100},
     {headerName: "Packaging kg", field: "packagingKg", minWidth: 100, width: 100},
     {headerName: "Price / kg (USD)", field: "priceKgUSD", minWidth: 100, width: 100},
